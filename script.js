@@ -8,8 +8,8 @@ const platforms = {
     // Instagram: Busca por Keyword - A melhor para achar o "Nome de Exibição" e "Bio"
     'instagram': (q) => `https://www.instagram.com/explore/search/keyword/?q=${encodeURIComponent(q)}`,
     
-    // Facebook: Busca Global - Prioriza nomes de pessoas parecidos
-    'facebook': (q) => `https://www.facebook.com/search/top/?q=${encodeURIComponent(q)}`,
+    // Facebook: Busca direta de pessoas (mais estável)
+    'facebook': (q) => `https://www.facebook.com/search/people/?q=${encodeURIComponent(q)}`,
     
     // TikTok: Busca de usuários por nome real
     'tiktok': (q) => `https://www.tiktok.com/search/user?q=${encodeURIComponent(q)}`,
