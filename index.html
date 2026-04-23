@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ferramenta automatizada de busca OSINT para localização de informações públicas.">
-    <title>OSINT Scanner | Inteligência Digital</title>
+    <title>OSINT Express | Busca Direta</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,50 +14,94 @@
     
     <main class="container">
         <header class="hero">
-            <div class="badge">Automatic OSINT Scanner</div>
-            <h1>OSINT <span>Scanner</span></h1>
-            <p>Busca automatizada em fontes abertas e redes sociais.</p>
+            <div class="badge">Acesso Direto à Inteligência</div>
+            <h1>OSINT <span>Direct</span></h1>
+            <p>Digite o nome e clique no site para ir direto aos resultados.</p>
         </header>
 
         <section class="search-section">
             <div class="search-box-container">
                 <div class="search-box">
-                    <input type="text" id="target" placeholder="Digite o nome completo ou usuário..." autocomplete="off">
+                    <input type="text" id="target" placeholder="Digite o nome da pessoa aqui..." autocomplete="off">
                     <div class="search-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     </div>
                 </div>
-                <button id="start-scan" class="btn-scan" onclick="startAutomatedScan()">
-                    <span>Iniciar Varredura</span>
-                    <div class="scan-loader" id="loader" style="display: none;"></div>
+                
+                <button class="btn-main-action" onclick="openAllMain()">
+                    🚀 Abrir Principais (Google + Insta + Jusbrasil)
                 </button>
             </div>
         </section>
 
-        <!-- Scanning Status Console -->
-        <section id="scan-console" class="scan-console" style="display: none;">
-            <div class="console-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="console-title">System Logs</span>
+        <section class="direct-grid">
+            <div class="platform-card" onclick="openDirect('google')">
+                <div class="p-icon">G</div>
+                <div class="p-info">
+                    <h3>Google</h3>
+                    <span>Busca Geral</span>
+                </div>
             </div>
-            <div id="console-output" class="console-output"></div>
-        </section>
+            
+            <div class="platform-card" onclick="openDirect('instagram')">
+                <div class="p-icon">IG</div>
+                <div class="p-info">
+                    <h3>Instagram</h3>
+                    <span>Fotos e Perfil</span>
+                </div>
+            </div>
 
-        <!-- Results Section -->
-        <section id="results-section" class="results-grid" style="display: none;">
-            <div class="results-header">
-                <h2>Resultados Encontrados</h2>
-                <div class="results-line"></div>
+            <div class="platform-card" onclick="openDirect('jusbrasil')">
+                <div class="p-icon">JB</div>
+                <div class="p-info">
+                    <h3>Jusbrasil</h3>
+                    <span>Processos</span>
+                </div>
             </div>
-            <div id="results-container" class="results-container">
-                <!-- Results will be injected here -->
+
+            <div class="platform-card" onclick="openDirect('linkedin')">
+                <div class="p-icon">IN</div>
+                <div class="p-info">
+                    <h3>LinkedIn</h3>
+                    <span>Profissional</span>
+                </div>
+            </div>
+
+            <div class="platform-card" onclick="openDirect('facebook')">
+                <div class="p-icon">FB</div>
+                <div class="p-info">
+                    <h3>Facebook</h3>
+                    <span>Rede Social</span>
+                </div>
+            </div>
+
+            <div class="platform-card" onclick="openDirect('escavador')">
+                <div class="p-icon">EX</div>
+                <div class="p-info">
+                    <h3>Escavador</h3>
+                    <span>Histórico Público</span>
+                </div>
+            </div>
+
+            <div class="platform-card" onclick="openDirect('google_images')">
+                <div class="p-icon">IMG</div>
+                <div class="p-info">
+                    <h3>Imagens</h3>
+                    <span>Fotos da Pessoa</span>
+                </div>
+            </div>
+
+            <div class="platform-card" onclick="openDirect('tiktok')">
+                <div class="p-icon">TK</div>
+                <div class="p-info">
+                    <h3>TikTok</h3>
+                    <span>Vídeos</span>
+                </div>
             </div>
         </section>
 
         <footer class="footer">
-            <p>&copy; 2024 OSINT Scanner. Use com responsabilidade.</p>
+            <p>&copy; 2024 OSINT Direct. O nome digitado será enviado para o site ao clicar.</p>
         </footer>
     </main>
 
