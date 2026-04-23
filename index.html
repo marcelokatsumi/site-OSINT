@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSINT Express | Busca Direta</title>
+    <title>OSINT Express | Busca Inteligente</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
@@ -14,94 +14,102 @@
     
     <main class="container">
         <header class="hero">
-            <div class="badge">Acesso Direto à Inteligência</div>
-            <h1>OSINT <span>Direct</span></h1>
-            <p>Digite o nome e clique no site para ir direto aos resultados.</p>
+            <div class="badge">Inteligência Digital Express</div>
+            <h1>OSINT <span>Search</span></h1>
+            <p>Digite um nome completo para iniciar a investigação.</p>
         </header>
 
         <section class="search-section">
             <div class="search-box-container">
                 <div class="search-box">
-                    <input type="text" id="target" placeholder="Digite o nome da pessoa aqui..." autocomplete="off">
-                    <div class="search-icon">
+                    <input type="text" id="target" placeholder="Nome completo da pessoa..." autocomplete="off">
+                    <div class="search-icon" onclick="handleSearch()" style="cursor: pointer;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     </div>
                 </div>
+                <div class="hint">Pressione <strong>Enter</strong> para ver as opções</div>
+            </div>
+        </section>
+
+        <!-- Esta área começa escondida -->
+        <div id="results-area" class="results-area">
+            <div class="divider">
+                <span>Fontes Disponíveis</span>
+            </div>
+
+            <button class="btn-main-action" onclick="openAllMain()">
+                🚀 Abrir Tudo (Google + Insta + Jusbrasil)
+            </button>
+
+            <section class="direct-grid">
+                <div class="platform-card" onclick="openDirect('google')">
+                    <div class="p-icon">G</div>
+                    <div class="p-info">
+                        <h3>Google</h3>
+                        <span>Busca Geral</span>
+                    </div>
+                </div>
                 
-                <button class="btn-main-action" onclick="openAllMain()">
-                    🚀 Abrir Principais (Google + Insta + Jusbrasil)
-                </button>
-            </div>
-        </section>
+                <div class="platform-card" onclick="openDirect('instagram')">
+                    <div class="p-icon">IG</div>
+                    <div class="p-info">
+                        <h3>Instagram</h3>
+                        <span>Busca por Nome/Bio (Deep)</span>
+                    </div>
+                </div>
 
-        <section class="direct-grid">
-            <div class="platform-card" onclick="openDirect('google')">
-                <div class="p-icon">G</div>
-                <div class="p-info">
-                    <h3>Google</h3>
-                    <span>Busca Geral</span>
+                <div class="platform-card" onclick="openDirect('jusbrasil')">
+                    <div class="p-icon">JB</div>
+                    <div class="p-info">
+                        <h3>Jusbrasil</h3>
+                        <span>Processos e Diários</span>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="platform-card" onclick="openDirect('instagram')">
-                <div class="p-icon">IG</div>
-                <div class="p-info">
-                    <h3>Instagram</h3>
-                    <span>Fotos e Perfil</span>
-                </div>
-            </div>
 
-            <div class="platform-card" onclick="openDirect('jusbrasil')">
-                <div class="p-icon">JB</div>
-                <div class="p-info">
-                    <h3>Jusbrasil</h3>
-                    <span>Processos</span>
+                <div class="platform-card" onclick="openDirect('linkedin')">
+                    <div class="p-icon">IN</div>
+                    <div class="p-info">
+                        <h3>LinkedIn</h3>
+                        <span>Perfil Profissional</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="platform-card" onclick="openDirect('linkedin')">
-                <div class="p-icon">IN</div>
-                <div class="p-info">
-                    <h3>LinkedIn</h3>
-                    <span>Profissional</span>
+                <div class="platform-card" onclick="openDirect('facebook')">
+                    <div class="p-icon">FB</div>
+                    <div class="p-info">
+                        <h3>Facebook</h3>
+                        <span>Busca Interna de Usuários</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="platform-card" onclick="openDirect('facebook')">
-                <div class="p-icon">FB</div>
-                <div class="p-info">
-                    <h3>Facebook</h3>
-                    <span>Rede Social</span>
+                <div class="platform-card" onclick="openDirect('escavador')">
+                    <div class="p-icon">EX</div>
+                    <div class="p-info">
+                        <h3>Escavador</h3>
+                        <span>Dados Acadêmicos/Públicos</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="platform-card" onclick="openDirect('escavador')">
-                <div class="p-icon">EX</div>
-                <div class="p-info">
-                    <h3>Escavador</h3>
-                    <span>Histórico Público</span>
+                <div class="platform-card" onclick="openDirect('google_images')">
+                    <div class="p-icon">IMG</div>
+                    <div class="p-info">
+                        <h3>Imagens</h3>
+                        <span>Rostos e Fotos</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="platform-card" onclick="openDirect('google_images')">
-                <div class="p-icon">IMG</div>
-                <div class="p-info">
-                    <h3>Imagens</h3>
-                    <span>Fotos da Pessoa</span>
+                <div class="platform-card" onclick="openDirect('tiktok')">
+                    <div class="p-icon">TK</div>
+                    <div class="p-info">
+                        <h3>TikTok</h3>
+                        <span>Vídeos de Usuários</span>
+                    </div>
                 </div>
-            </div>
-
-            <div class="platform-card" onclick="openDirect('tiktok')">
-                <div class="p-icon">TK</div>
-                <div class="p-info">
-                    <h3>TikTok</h3>
-                    <span>Vídeos</span>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <footer class="footer">
-            <p>&copy; 2024 OSINT Direct. O nome digitado será enviado para o site ao clicar.</p>
+            <p>&copy; 2024 OSINT Express. Use com ética.</p>
         </footer>
     </main>
 
